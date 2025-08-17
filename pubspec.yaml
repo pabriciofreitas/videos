@@ -38,12 +38,19 @@ dependencies:
   google_sign_in: ^7.1.1
   firebase_core: ^4.0.0
   cloud_firestore: ^6.0.0
+  auto_size_text: ^3.0.0
+  dio: ^5.9.0
+  
+
+
 
 
 
 
 dev_dependencies:
   flutter_test:
+    sdk: flutter
+  integration_test:
     sdk: flutter
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -52,6 +59,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  mockito: ^5.4.4
+  build_runner: ^2.4.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -80,17 +89,123 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/font/Montserrat/Montserrat-Thin.ttf
+          weight: 100
+        - asset: assets/font/Montserrat/Montserrat-ThinItalic.ttf
+          weight: 100
+          style: italic
+        - asset: assets/font/Montserrat/Montserrat-ExtraLight.ttf
+          weight: 200
+        - asset: assets/font/Montserrat/Montserrat-ExtraLightItalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/font/Montserrat/Montserrat-Light.ttf
+          weight: 300
+        - asset: assets/font/Montserrat/Montserrat-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/font/Montserrat/Montserrat-Regular.ttf
+          weight: 400
+        - asset: assets/font/Montserrat/Montserrat-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/font/Montserrat/Montserrat-Medium.ttf
+          weight: 500
+        - asset: assets/font/Montserrat/Montserrat-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/font/Montserrat/Montserrat-SemiBold.ttf
+          weight: 600
+        - asset: assets/font/Montserrat/Montserrat-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/font/Montserrat/Montserrat-Bold.ttf
+          weight: 700
+        - asset: assets/font/Montserrat/Montserrat-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/font/Montserrat/Montserrat-ExtraBold.ttf
+          weight: 800
+        - asset: assets/font/Montserrat/Montserrat-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/font/Montserrat/Montserrat-Black.ttf
+          weight: 900
+        - asset: assets/font/Montserrat/Montserrat-BlackItalic.ttf
+          weight: 900
+          style: italic
+
+    - family: Epilogue
+      fonts:
+        - asset: assets/font/Epilogue/Epilogue-Thin.ttf
+          weight: 100
+        - asset: assets/font/Epilogue/Epilogue-ThinItalic.ttf
+          weight: 100
+          style: italic
+        - asset: assets/font/Epilogue/Epilogue-ExtraLight.ttf
+          weight: 200
+        - asset: assets/font/Epilogue/Epilogue-ExtraLightItalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/font/Epilogue/Epilogue-Light.ttf
+          weight: 300
+        - asset: assets/font/Epilogue/Epilogue-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/font/Epilogue/Epilogue-Regular.ttf
+          weight: 400
+        - asset: assets/font/Epilogue/Epilogue-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/font/Epilogue/Epilogue-Medium.ttf
+          weight: 500
+        - asset: assets/font/Epilogue/Epilogue-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/font/Epilogue/Epilogue-SemiBold.ttf
+          weight: 600
+        - asset: assets/font/Epilogue/Epilogue-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/font/Epilogue/Epilogue-Bold.ttf
+          weight: 700
+        - asset: assets/font/Epilogue/Epilogue-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/font/Epilogue/Epilogue-ExtraBold.ttf
+          weight: 800
+        - asset: assets/font/Epilogue/Epilogue-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/font/Epilogue/Epilogue-Black.ttf
+          weight: 900
+        - asset: assets/font/Epilogue/Epilogue-BlackItalic.ttf
+          weight: 900
+          style: italic
+
+    - family: Outfit
+      fonts:
+        - asset: assets/font/Outfit/Outfit-Thin.ttf
+          weight: 100
+        - asset: assets/font/Outfit/Outfit-ExtraLight.ttf
+          weight: 200
+        - asset: assets/font/Outfit/Outfit-Light.ttf
+          weight: 300
+        - asset: assets/font/Outfit/Outfit-Regular.ttf
+          weight: 400
+        - asset: assets/font/Outfit/Outfit-Medium.ttf
+          weight: 500
+        - asset: assets/font/Outfit/Outfit-SemiBold.ttf
+          weight: 600
+        - asset:  assets/font/Outfit/Outfit-Bold.ttf
+          weight: 700
+        - asset:  assets/font/Outfit/Outfit-ExtraBold.ttf
+          weight: 800
+        - asset:  assets/font/Outfit/Outfit-Black.ttf
+          weight: 900
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
