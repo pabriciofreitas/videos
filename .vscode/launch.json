@@ -9,7 +9,6 @@
       "request": "launch",
       "type": "dart",
       "args": ["--dart-define-from-file", "keys.json"]
-    },
     {
       "name": "videos (profile mode)",
       "request": "launch",

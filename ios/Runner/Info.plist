@@ -45,6 +45,7 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
 	<!-- PERMISSÕES DO IMAGE_PICKER -->
 	<key>NSCameraUsageDescription</key>
 	<string>Precisamos acessar a câmera para tirar fotos.</string>
@@ -52,5 +53,12 @@
 	<string>Precisamos acessar sua galeria para selecionar fotos.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Precisamos salvar fotos na sua galeria.</string>	
+
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+
 </dict>
 </plist>
