@@ -36,6 +36,24 @@ class SignUpRepository implements ISignUpRepository {
     }
   }
 
+  @override
+  Future<User?> createUserWithGoogle() async {
+    try {
+      final user = await _firebaseAuthService.signInWithGoogle();
+      if (user != null) {
+        await _registerUserInApi(
+          email: user.email ?? '',
+          password: '', // Password is not used for Google sign-in
+          username: user.displayName ?? user.email ?? 'User',
+          firebaseUID: user.uid,
+        );
+      }
+      return user;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> _registerUserInApi({
     required String email,
     required String password,

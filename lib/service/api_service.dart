@@ -25,7 +25,7 @@ class ApiService {
       console('STATUS CODE : ${response.statusCode}');
       return response;
     } catch (e) {
-      rethrow;
+      throw Exception('Service error occurred, please try again.');
     }
   }
 
@@ -42,6 +42,7 @@ class ApiService {
       console('STATUS CODE : ${response.statusCode}');
       return response;
     } catch (e) {
+      console('Error in POST request: $e');
       rethrow;
     }
   }

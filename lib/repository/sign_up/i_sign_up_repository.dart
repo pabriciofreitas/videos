@@ -5,6 +5,7 @@ abstract class ISignUpRepository {
     required String email,
     required String password,
   });
+  Future<User?> createUserWithGoogle();
   Future<void> updateUser({
     required String username,
     required String firebaseUID,

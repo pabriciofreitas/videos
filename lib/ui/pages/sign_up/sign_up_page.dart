@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
@@ -16,9 +16,16 @@ import 'package:videos/ui/widgets/custom_button_widget.dart';
 import 'package:videos/ui/widgets/custom_texformfield_widget.dart';
 import 'package:videos/ui/widgets/divider_with_text_widget.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   final SignUpViewModel signUpViewModel;
   const SignUpPage({super.key, required this.signUpViewModel});
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +33,7 @@ class SignUpPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: ListenableBuilder(
-        listenable: signUpViewModel,
+        listenable: widget.signUpViewModel,
         builder: (context, _) {
           return SingleChildScrollView(
             child: Padding(
@@ -78,10 +85,20 @@ class SignUpPage extends StatelessWidget {
                   const SizedBox(height: 41),
                   ButtonGoogleAndAppleWidget(
                     onAppleTap: () {
-                      // ação de clique para Apple
+                      AppSnackBar().showNoConnectionSnackBar(
+                        context,
+                        'Coming soon',
+                      );
                     },
-                    onGoogleTap: () {
-                      // ação de clique para Google
+                    onGoogleTap: () async {
+                      try {
+                        await widget.signUpViewModel.createUserWithGoogle();
+                      } on Exception catch (e) {
+                        AppSnackBar().showNoConnectionSnackBar(
+                          context,
+                          e.toString(), //           e.toString().replaceAll("Exception: ", ''),
+                        );
+                      }
                     },
                   ),
                   const SizedBox(height: 41),
@@ -90,11 +107,13 @@ class SignUpPage extends StatelessWidget {
 
                   const SizedBox(height: 52),
                   Form(
+                    key: formKey,
                     child: Column(
                       children: [
                         CustomTextFormFieldWidget(
                           hintText: 'Email',
-                          controller: signUpViewModel.emailTextEditController,
+                          controller:
+                              widget.signUpViewModel.emailTextEditController,
                           validator: EmailValidator.validate,
                         ),
 
@@ -102,7 +121,7 @@ class SignUpPage extends StatelessWidget {
 
                         CustomTextFormFieldWidget(
                           controller:
-                              signUpViewModel.passwordTextEditController,
+                              widget.signUpViewModel.passwordTextEditController,
                           hintText: 'Password',
                           showShadow: true,
                           isPassword: true,
@@ -111,14 +130,18 @@ class SignUpPage extends StatelessWidget {
                         const SizedBox(height: AppSpacements.md),
 
                         CustomTextFormFieldWidget(
-                          controller:
-                              signUpViewModel.passwordConfirmTextEditController,
+                          controller: widget
+                              .signUpViewModel
+                              .passwordConfirmTextEditController,
                           hintText: 'Confirm your Password',
                           showShadow: true,
                           isPassword: true,
                           validator: (v) => PasswordConfirmValidator.validate(
                             v,
-                            signUpViewModel.passwordTextEditController.text
+                            widget
+                                .signUpViewModel
+                                .passwordTextEditController
+                                .text
                                 .trim(),
                           ),
                         ),
@@ -130,15 +153,25 @@ class SignUpPage extends StatelessWidget {
 
                   CustomButtonWidget(
                     text: 'Create Account',
-                    isLoading: signUpViewModel.isLoading,
+                    isLoading: widget.signUpViewModel.isLoading,
                     onPressed: () async {
+                      Navigator.of(context).pushNamed(
+                        '/sign-up-onboarding',
+                        arguments: widget.signUpViewModel,
+                      );
+                      if (!formKey.currentState!.validate()) return;
                       try {
-                        await signUpViewModel.createUserWithEmailAndPassword();
+                        await widget.signUpViewModel
+                            .createUserWithEmailAndPassword();
+
+                        Navigator.of(context).pushNamed(
+                          '/sign-up-onboarding',
+                          arguments: widget.signUpViewModel,
+                        );
                       } on Exception catch (e) {
                         AppSnackBar().showNoConnectionSnackBar(
-                          // ignore: use_build_context_synchronously
                           context,
-                          e.toString(),
+                          e.toString().replaceAll("Exception: ", ''),
                         );
                       }
                     },

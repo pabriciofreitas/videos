@@ -32,54 +32,65 @@ class _CustomTextFormFieldWidgetState extends State<CustomTextFormFieldWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 60,
-      decoration: widget.showShadow
-          ? BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.shadow,
-                  blurRadius: 6,
-                  offset: Offset(0, -8), // sombra vai para cima
-                ),
-              ],
-            )
-          : null,
-      child: TextFormField(
-        autovalidateMode: widget.autovalidateMode,
-        controller: widget.controller,
-        obscureText: widget.isPassword ? _obscureText : false,
-        keyboardType: widget.keyboardType,
-        style: AppTextStyle.epilogue400BodyMediumWhite,
-        validator: widget.validator,
-        decoration: InputDecoration(
-          labelText: widget.hintText,
-          labelStyle: AppTextStyle.epilogue400BodyMediumWhite45,
-          filled: true,
-          fillColor: Color(0xFF1E1E1E),
-          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: Colors.grey[700]!),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: Colors.grey[500]!),
-          ),
-          suffixIcon: widget.isPassword
-              ? IconButton(
-                  icon: Icon(
-                    _obscureText ? Icons.visibility_off : Icons.visibility,
-                    color: Colors.grey[400],
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      _obscureText = !_obscureText;
-                    });
-                  },
-                )
-              : null,
+    return TextFormField(
+      autovalidateMode: widget.autovalidateMode,
+      controller: widget.controller,
+      obscureText: widget.isPassword ? _obscureText : false,
+      keyboardType: widget.keyboardType,
+      style: AppTextStyle.epilogue400BodyMediumWhite,
+      validator: widget.validator,
+      onTapOutside: (event) => FocusScope.of(context).unfocus(),
+      decoration: InputDecoration(
+        labelText: widget.hintText,
+        labelStyle: AppTextStyle.epilogue400BodyMediumWhite45,
+        filled: true,
+        fillColor: Color(0xFF1E1E1E),
+        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        // Borda quando está habilitado (sem foco)
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: AppColors.white45),
         ),
+
+        // Borda quando está focado
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: AppColors.white20),
+        ),
+
+        // Borda quando está com erro (sem foco)
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: Colors.red.withOpacity(0.7),
+            width: 1.5,
+          ),
+        ),
+
+        // Borda quando está com erro e focado
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: Colors.red, width: 2),
+        ),
+
+        // Borda quando está desabilitado
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: AppColors.grey, width: 1),
+        ),
+        suffixIcon: widget.isPassword
+            ? IconButton(
+                icon: Icon(
+                  _obscureText ? Icons.visibility_off : Icons.visibility,
+                  color: AppColors.grey,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
+              )
+            : null,
       ),
     );
   }

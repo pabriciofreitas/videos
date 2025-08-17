@@ -1,19 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:videos/core/app_print.dart';
 
 class FirebaseAuthService {
-  // Construtor privado padrão
-  FirebaseAuthService([FirebaseAuth? auth])
-    : _auth = auth ?? FirebaseAuth.instance;
+  FirebaseAuthService([FirebaseAuth? auth, GoogleSignIn? googleSignIn])
+    : _auth = auth ?? FirebaseAuth.instance,
+      _googleSignIn = googleSignIn ?? GoogleSignIn.instance;
 
-  // Construtor privado interno para singleton
-  FirebaseAuthService._internal() : _auth = FirebaseAuth.instance;
+  FirebaseAuthService._internal()
+    : _auth = FirebaseAuth.instance,
+      _googleSignIn = GoogleSignIn.instance;
 
-  // Instância singleton (uso padrão no app)
   static final FirebaseAuthService instance = FirebaseAuthService._internal();
   final FirebaseAuth _auth;
+  final GoogleSignIn _googleSignIn;
 
-  // Método para criar usuário com email e senha
   Future<User?> createUserWithEmailAndPassword({
     required String email,
     required String password,
@@ -37,5 +38,22 @@ class FirebaseAuthService {
     } catch (e) {
       throw Exception('Error creating account, please try again.');
     }
+  }
+
+  Future<User?> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn.instance
+        .authenticate();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication googleAuth = googleUser!.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      idToken: googleAuth.idToken,
+    );
+
+    final v = await FirebaseAuth.instance.signInWithCredential(credential);
+    return v.user;
   }
 }

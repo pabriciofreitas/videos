@@ -23,9 +23,12 @@ Route<dynamic>? generateRoute(RouteSettings settings) {
         ),
       );
     case '/sign-up-onboarding':
-      return MaterialPageRoute(builder: (_) => SignUpOnboardingPage());
+      final args = settings.arguments as SignUpViewModel;
+      return MaterialPageRoute(
+        builder: (_) => SignUpOnboardingPage(signUpViewModel: args),
+      );
     // case '/sign-up':
-    //   final args = settings.arguments as DetailsArguments;
+    //
     //   return MaterialPageRoute(builder: (_) => DetailsPage(args: args));
     default:
       return MaterialPageRoute(

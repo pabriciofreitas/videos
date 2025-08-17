@@ -30,8 +30,14 @@ class AppTextStyle {
   static const TextStyle epilogue600BodyMediumWhite = TextStyle(
     color: AppColors.white,
     fontFamily: fontFamilyEpilogue,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w600,
     fontSize: AppFontSizes.bodyMedium,
+  );
+  static const TextStyle epilogue700BodyWhite = TextStyle(
+    color: AppColors.white,
+    fontFamily: fontFamilyEpilogue,
+    fontWeight: FontWeight.w700,
+    fontSize: AppFontSizes.body,
   );
 
   static const TextStyle epilogue600BodyMediumPrimary = TextStyle(
@@ -51,6 +57,12 @@ class AppTextStyle {
     fontFamily: fontFamilyEpilogue,
     fontWeight: FontWeight.w400,
     fontSize: AppFontSizes.bodyMedium,
+  );
+  static const TextStyle epilogue400SmallWhite = TextStyle(
+    color: AppColors.white,
+    fontFamily: fontFamilyEpilogue,
+    fontWeight: FontWeight.w400,
+    fontSize: AppFontSizes.small,
   );
 
   static const TextStyle outfit500BodyGrey = TextStyle(
