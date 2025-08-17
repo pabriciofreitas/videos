@@ -6,9 +6,7 @@ class ApiService {
 
   static final ApiService instance = ApiService._();
 
-  static const String baseUrl =
-      'https://untold-strapi.api.prod.loomi.com.br/api/';
-
+  static const String baseUrl = String.fromEnvironment("API_URL");
   final Dio _dio = Dio(
     BaseOptions(
       baseUrl: baseUrl,
