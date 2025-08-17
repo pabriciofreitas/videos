@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "515025719974",
+    "project_id": "videos-3d396",
+    "storage_bucket": "videos-3d396.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515025719974:android:e35470960c388a3d2fda67",
+        "android_client_info": {
+          "package_name": "com.pabricio.videos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6c_6md8tKVg54qWH8irVhKISj6JyHs24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
