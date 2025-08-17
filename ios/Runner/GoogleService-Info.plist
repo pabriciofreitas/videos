@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyDNP9_edlx1-74oIL9SHjSw8zDkbEeDxNg</string>
+	<string>AIzaSyDnRTXKUwPXCDSNbIEmu_9Uwkbb3SVuOcM</string>
 	<key>GCM_SENDER_ID</key>
-	<string>515025719974</string>
+	<string>787952710825</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.pabricio.videos</string>
+	<string>com.app.untold</string>
 	<key>PROJECT_ID</key>
-	<string>videos-3d396</string>
+	<string>untold-app-prod</string>
 	<key>STORAGE_BUCKET</key>
-	<string>videos-3d396.firebasestorage.app</string>
+	<string>untold-app-prod.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:515025719974:ios:29b8f1e7206c6dc52fda67</string>
+	<string>1:787952710825:ios:9b8e987e6e4cabeb8b25b8</string>
 </dict>
 </plist>

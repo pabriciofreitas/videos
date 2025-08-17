@@ -1,4 +1,4 @@
-package com.pabricio.videos
+package com.app.untold
 
 import io.flutter.embedding.android.FlutterActivity
 
