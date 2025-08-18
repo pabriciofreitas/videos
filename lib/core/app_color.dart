@@ -12,4 +12,5 @@ class AppColors {
   static const Color background = Color(0xFF131418);
   static const Color backgroundButton = Color(0x33BC4CF1);
   static const Color shadow = Color(0x50444552);
+  static const Color divider = Color(0xFFD9D9D9);
 }

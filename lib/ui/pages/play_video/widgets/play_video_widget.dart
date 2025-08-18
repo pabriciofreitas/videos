@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import 'package:videos/ui/pages/play_video/buttons_video_play_widget.dart';
+import 'package:videos/ui/pages/play_video/widgets/buttons_video_play_widget.dart';
 import 'package:videos/ui/pages/play_video/video_play_view_model.dart';
 
 /// Como chamar

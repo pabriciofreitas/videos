@@ -16,4 +16,7 @@ class AppFontSizes {
 
   ///FontSize: 24
   static const title = 24.0;
+
+  ///FontSize: 24
+  static const titleLarge = 32.0;
 }

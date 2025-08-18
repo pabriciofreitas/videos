@@ -144,10 +144,9 @@ class _SignUpOnboardingPageState extends State<SignUpOnboardingPage> {
                 text: 'Continue',
                 isLoading: widget.signUpViewModel.isLoading,
                 onPressed: () async {
-                  // Navigator.of(context).pushNamed(
-                  //   '/sign-up-onboarding',
-                  //   arguments: widget.signUpViewModel,
-                  // );
+                  Navigator.of(
+                    context,
+                  ).pushNamedAndRemoveUntil('/home', (route) => false);
                   // if (!formKey.currentState!.validate()) return;
                   // try {
                   //   await widget.signUpViewModel

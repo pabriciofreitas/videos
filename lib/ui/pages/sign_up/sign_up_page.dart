@@ -42,7 +42,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(height: AppSpacements.sm),
+                  const SizedBox(height: 52),
                   Image.asset(
                     AppAssets.logoWithText,
                     width: width * 0.30,
@@ -159,21 +159,21 @@ class _SignUpPageState extends State<SignUpPage> {
                         '/sign-up-onboarding',
                         arguments: widget.signUpViewModel,
                       );
-                      if (!formKey.currentState!.validate()) return;
-                      try {
-                        await widget.signUpViewModel
-                            .createUserWithEmailAndPassword();
+                      // if (!formKey.currentState!.validate()) return;
+                      // try {
+                      //   await widget.signUpViewModel
+                      //       .createUserWithEmailAndPassword();
 
-                        Navigator.of(context).pushNamed(
-                          '/sign-up-onboarding',
-                          arguments: widget.signUpViewModel,
-                        );
-                      } on Exception catch (e) {
-                        AppSnackBar().showNoConnectionSnackBar(
-                          context,
-                          e.toString().replaceAll("Exception: ", ''),
-                        );
-                      }
+                      //   Navigator.of(context).pushNamed(
+                      //     '/sign-up-onboarding',
+                      //     arguments: widget.signUpViewModel,
+                      //   );
+                      // } on Exception catch (e) {
+                      //   AppSnackBar().showNoConnectionSnackBar(
+                      //     context,
+                      //     e.toString().replaceAll("Exception: ", ''),
+                      //   );
+                      // }
                     },
                   ),
                   const SizedBox(height: 41),
