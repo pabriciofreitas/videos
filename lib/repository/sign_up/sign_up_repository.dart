@@ -22,14 +22,14 @@ class SignUpRepository implements ISignUpRepository {
         email: email,
         password: password,
       );
-      if (user != null) {
-        await _registerUserInApi(
-          email: email,
-          password: password,
-          username: user.displayName ?? email,
-          firebaseUID: user.uid,
-        );
-      }
+      // if (user != null) {
+      //   await _registerUserInApi(
+      //     email: email,
+      //     password: password,
+      //     username: user.displayName ?? email,
+      //     firebaseUID: user.uid,
+      //   );
+      // }
       return user;
     } catch (e) {
       rethrow;

@@ -9,6 +9,7 @@ class CustomButtonWidget extends StatelessWidget {
   final Color textColor;
   final Color borderColor;
   final double borderRadius;
+  final bool boxShadow;
   final bool isLoading;
 
   const CustomButtonWidget({
@@ -16,6 +17,7 @@ class CustomButtonWidget extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.isLoading = false,
+    this.boxShadow = true,
     this.backgroundColor =
         AppColors.backgroundButton, // Exemplo similar ao fundo da imagem
     this.textColor = AppColors.primary, // Cor do texto da imagem
@@ -27,17 +29,19 @@ class CustomButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.background,
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(borderRadius),
         border: Border.all(color: borderColor),
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0x33F1CC4C),
-            blurRadius: 18.33,
-            spreadRadius: 0,
-            offset: const Offset(0, 0),
-          ),
-        ],
+        boxShadow: boxShadow
+            ? [
+                BoxShadow(
+                  color: const Color(0x33F1CC4C),
+                  blurRadius: 18.33,
+                  spreadRadius: 0,
+                  offset: const Offset(0, 0),
+                ),
+              ]
+            : null,
       ),
 
       child: ConstrainedBox(
@@ -63,7 +67,12 @@ class CustomButtonWidget extends StatelessWidget {
                     color: AppColors.primary,
                   ),
                 )
-              : Text(text, style: AppTextStyle.epilogue600BodyMediumPrimary),
+              : Text(
+                  text,
+                  style: AppTextStyle.epilogue600BodyMediumPrimary.copyWith(
+                    color: textColor,
+                  ),
+                ),
         ),
       ),
     );
